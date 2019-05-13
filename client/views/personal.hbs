@@ -1,0 +1,73 @@
+<div class="ui grid" ng-controller="personalCtrl" ng-init="init()">
+  <div class="eight wide column">
+    <form class="ui form" >
+        <h4 class="ui dividing header">Datos de Informacion</h4>
+        <div class="field">
+          <label>Nombre</label>
+          <div class="two fields">
+            <div class="field">
+              <input name="fname" type="text" placeholder="Nombre" ng-model="datos.nombre" ng-blur="verificarNombre()">
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Apellido" ng-model="datos.ap" ng-blur="verificarAp()">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Edad</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="text" placeholder="Edad" ng-model="datos.edad" ng-blur="verificarEdad()">
+            </div>
+            <div class="four wide field">
+              <input type="text" placeholder="Correo" ng-model="datos.correo" ng-blur="verificarCorreo()">
+            </div>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Telefono</label>
+            <input type="text" ng-model="datos.telefono" ng-blur="verificarTelefono()">
+            </input>
+          </div>    
+        </div>
+        <label>Activo</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" placeholder="Activo" ng-model="datos.activo" ng-blur="verificarActivo()">
+          </div>
+        </div>
+       <button class="ui button" tabindex="0" ng-click="btnGuardar()" ng-disabled="datos.nombre.length == 0 || datos.ap.length == 0   || datos.edad.length == 0  || datos.correo.length == 0   || datos.telefono.length == 0   || datos.activo.length == 0">
+         Enviar Datos
+       </button>
+    </form>
+  </div>
+  <div class="eight wide column">
+      <button ng-click="swicheo()" ng-show="mostrar">
+    Activo
+</button>
+<button ng-click="swicheo()" ng-hide="mostrar">
+    Inactivo
+</button>
+    <table class="ui table">
+      <thead>
+        <th>Nombre completo</th>
+        <th>Edad</th>
+        <th>Correo</th>
+        <th>Telfono</th>
+        <th>Activo</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="dato in datos_list">
+          <td>{[dato.nombre_completo]}</td>
+          <td>{[dato.edad]}</td>
+          <td>{[dato.correo]}</td>
+          <td>{[dato.telefono]}</td>
+          <td>{[dato.activo]}</td>
+          <td><button class="negative ui button" ng-click="btnBorrar(dato)">X</button></td>    
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>     

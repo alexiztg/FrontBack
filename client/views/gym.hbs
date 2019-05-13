@@ -1,0 +1,75 @@
+<div class="ui grid" ng-controller="gymCtrl" ng-init="init()">
+  <div class="eight wide column">
+    <form class="ui form" >
+        <h4 class="ui dividing header">Datos de Informacion</h4>
+        <div class="field">
+          <label>Nombre</label>
+          <div class="two fields">
+            <div class="field">
+              <input name="fname" type="text" placeholder="Nombre" ng-model="datos.nombre" ng-blur="verificarNombre()">
+            </div>
+            <div class="field">
+              <input type="text" placeholder="Apellido" ng-model="datos.apellido" ng-blur="verificarApellido()">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Direccion</label>
+          <div class="fields">
+            <div class="twelve wide field">
+              <input type="text" placeholder="Direccion" ng-model="datos.direccion" ng-blur="verificarDireccion()">
+            </div>
+            <div class="four wide field">
+              <input type="text" placeholder="Interior" ng-model="datos.interior" ng-blur="verificarInterior()">
+            </div>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Estado</label>
+            <select class="ui fluid dropdown" ng-model="datos.estado" ng-blur="verificarEstado()">
+              <option value="">Estado</option>
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+            </select>
+          </div>    
+        </div>
+        <label>Celular</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" placeholder="Celular" ng-model="datos.celular" ng-blur="verificarCelular()">
+          </div>
+        </div>
+       <button class="ui button" tabindex="0" ng-click="btnGuardar()" ng-disabled="datos.nombre.length == 0 || datos.apellido.length == 0   || datos.direccion.length == 0  || datos.interior.length == 0   || datos.estado.length == 0   || datos.celular.length == 0">
+         Submit Order
+       </button>
+    </form>
+  </div>
+  <div class="eight wide column">
+    <table class="ui table">
+      <thead>
+        <th>Nombre completo</th>
+        <th>Direccion</th>
+        <th>Interior</th>
+        <th>Estado</th>
+        <th>Celular</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="dato in datos_list">
+          <td>{[dato.nombre_completo]}</td>
+          <td>{[dato.direccion]}</td>
+          <td>{[dato.interior]}</td>
+          <td>{[dato.estado]}</td>
+          <td>{[dato.celular]}</td>
+          <td><button class="negative ui button" ng-click="btnBorrar(dato)">X</button></td>    
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>     
